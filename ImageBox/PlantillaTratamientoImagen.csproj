@@ -86,6 +86,10 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\ImageBox.Form1.resources" />
+    <EmbeddedResource Include="obj\Debug\ImageBox.Properties.Resources.resources" />
+    <EmbeddedResource Include="obj\x64\Debug\ImageBox.Form1.resources" />
+    <EmbeddedResource Include="obj\x64\Debug\ImageBox.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -95,6 +99,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="bin\Debug\ImageBox.exe.config" />
+    <None Include="bin\x64\Debug\ImageBox.exe.config" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\ImageBox.csproj.CopyComplete" />
+    <None Include="obj\Debug\ImageBox.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\ImageBox.csproj.GenerateResource.cache" />
+    <None Include="obj\Debug\ImageBox.csprojAssemblyReference.cache" />
+    <None Include="obj\x64\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\x64\Debug\ImageBox.csproj.CopyComplete" />
+    <None Include="obj\x64\Debug\ImageBox.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\x64\Debug\ImageBox.csproj.GenerateResource.cache" />
+    <None Include="obj\x64\Debug\ImageBox.csprojAssemblyReference.cache" />
+    <None Include="obj\x64\Debug\PlantillaTratamientoImagen.csproj.CopyComplete" />
+    <None Include="obj\x64\Debug\PlantillaTratamientoImagen.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\x64\Debug\PlantillaTratamientoImagen.csproj.GenerateResource.cache" />
+    <None Include="obj\x64\Debug\PlantillaTratamientoImagen.csprojAssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -109,21 +130,75 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\concrt140.dll" />
+    <Content Include="bin\Debug\cvextern.dll" />
+    <Content Include="bin\Debug\Emgu.CV.UI.dll" />
+    <Content Include="bin\Debug\Emgu.CV.UI.GL.dll" />
+    <Content Include="bin\Debug\Emgu.CV.UI.GL.xml" />
+    <Content Include="bin\Debug\Emgu.CV.UI.xml" />
+    <Content Include="bin\Debug\Emgu.CV.World.dll" />
+    <Content Include="bin\Debug\Emgu.CV.World.pdb" />
+    <Content Include="bin\Debug\Emgu.CV.World.xml" />
+    <Content Include="bin\Debug\ImageBox.exe" />
+    <Content Include="bin\Debug\ImageBox.pdb" />
+    <Content Include="bin\Debug\msvcp140.dll" />
+    <Content Include="bin\Debug\opencv_ffmpeg320_64.dll" />
+    <Content Include="bin\Debug\vcruntime140.dll" />
+    <Content Include="bin\Debug\ZedGraph.dll" />
+    <Content Include="bin\Debug\ZedGraph.xml" />
+    <Content Include="bin\Debug\zh-CN\ZedGraph.resources.dll" />
+    <Content Include="bin\x64\Debug\concrt140.dll" />
+    <Content Include="bin\x64\Debug\cvextern.dll" />
+    <Content Include="bin\x64\Debug\Emgu.CV.UI.dll" />
+    <Content Include="bin\x64\Debug\Emgu.CV.UI.GL.dll" />
+    <Content Include="bin\x64\Debug\Emgu.CV.UI.GL.xml" />
+    <Content Include="bin\x64\Debug\Emgu.CV.UI.xml" />
+    <Content Include="bin\x64\Debug\Emgu.CV.World.dll" />
+    <Content Include="bin\x64\Debug\Emgu.CV.World.pdb" />
+    <Content Include="bin\x64\Debug\Emgu.CV.World.xml" />
+    <Content Include="bin\x64\Debug\ImageBox.exe" />
+    <Content Include="bin\x64\Debug\ImageBox.pdb" />
+    <Content Include="bin\x64\Debug\msvcp140.dll" />
+    <Content Include="bin\x64\Debug\opencv_ffmpeg320_64.dll" />
+    <Content Include="bin\x64\Debug\vcruntime140.dll" />
+    <Content Include="bin\x64\Debug\ZedGraph.dll" />
+    <Content Include="bin\x64\Debug\ZedGraph.xml" />
+    <Content Include="bin\x64\Debug\zh-CN\ZedGraph.resources.dll" />
     <Content Include="concrt140.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="cvextern.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="img\box.png" />
+    <Content Include="img\box_in_scene.png" />
+    <Content Include="img\lena.jpg" />
+    <Content Include="img\license-plate.jpg" />
+    <Content Include="img\pedestrian.png" />
+    <Content Include="img\pic3.png" />
+    <Content Include="img\stop-sign-model.png" />
+    <Content Include="img\stop-sign.jpg" />
     <Content Include="msvcp140.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="obj\Debug\ImageBox.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\ImageBox.exe" />
+    <Content Include="obj\Debug\ImageBox.pdb" />
+    <Content Include="obj\x64\Debug\ImageBox.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\x64\Debug\ImageBox.exe" />
+    <Content Include="obj\x64\Debug\ImageBox.pdb" />
+    <Content Include="obj\x64\Debug\PlantillaTratamientoImagen.csproj.FileListAbsolute.txt" />
     <Content Include="opencv_ffmpeg320_64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="vcruntime140.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="obj\x64\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
