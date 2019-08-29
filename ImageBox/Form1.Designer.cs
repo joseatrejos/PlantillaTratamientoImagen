@@ -29,142 +29,129 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.imageBox1 = new Emgu.CV.UI.ImageBox();
-            this.imageBox2 = new Emgu.CV.UI.ImageBox();
-            this.histogramBox1 = new Emgu.CV.UI.HistogramBox();
-            this.histogramBox2 = new Emgu.CV.UI.HistogramBox();
-            this.histogramBox3 = new Emgu.CV.UI.HistogramBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).BeginInit();
+            this.panAndZoomPictureBox1 = new Emgu.CV.UI.PanAndZoomPictureBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.edgeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cannyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sovelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.laplacianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // panAndZoomPictureBox1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 23);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Cargar Imagen";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.panAndZoomPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panAndZoomPictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.panAndZoomPictureBox1.Name = "panAndZoomPictureBox1";
+            this.panAndZoomPictureBox1.Size = new System.Drawing.Size(1002, 749);
+            this.panAndZoomPictureBox1.TabIndex = 0;
+            this.panAndZoomPictureBox1.TabStop = false;
             // 
-            // button2
+            // contextMenuStrip1
             // 
-            this.button2.Location = new System.Drawing.Point(263, 23);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Escala de Grises";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // button3
+            // menuStrip1
             // 
-            this.button3.Location = new System.Drawing.Point(844, 22);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Histograma Azul";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.edgeToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1002, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // button4
+            // fileToolStripMenuItem
             // 
-            this.button4.Location = new System.Drawing.Point(457, 22);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(119, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Histograma Rojo";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadImageToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
             // 
-            // button5
+            // loadImageToolStripMenuItem
             // 
-            this.button5.Location = new System.Drawing.Point(633, 22);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(132, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Histograma Verde";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.Button5_Click);
+            this.loadImageToolStripMenuItem.Name = "loadImageToolStripMenuItem";
+            this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.loadImageToolStripMenuItem.Text = "Load Image";
+            this.loadImageToolStripMenuItem.Click += new System.EventHandler(this.LoadImageToolStripMenuItem_Click);
             // 
-            // imageBox1
+            // exitToolStripMenuItem
             // 
-            this.imageBox1.Location = new System.Drawing.Point(13, 73);
-            this.imageBox1.Name = "imageBox1";
-            this.imageBox1.Size = new System.Drawing.Size(365, 240);
-            this.imageBox1.TabIndex = 2;
-            this.imageBox1.TabStop = false;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
-            // imageBox2
+            // edgeToolStripMenuItem
             // 
-            this.imageBox2.Location = new System.Drawing.Point(13, 347);
-            this.imageBox2.Name = "imageBox2";
-            this.imageBox2.Size = new System.Drawing.Size(365, 240);
-            this.imageBox2.TabIndex = 2;
-            this.imageBox2.TabStop = false;
+            this.edgeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cannyToolStripMenuItem,
+            this.sovelToolStripMenuItem,
+            this.laplacianToolStripMenuItem});
+            this.edgeToolStripMenuItem.Name = "edgeToolStripMenuItem";
+            this.edgeToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.edgeToolStripMenuItem.Text = "Edges";
             // 
-            // histogramBox1
+            // cannyToolStripMenuItem
             // 
-            this.histogramBox1.Location = new System.Drawing.Point(457, 417);
-            this.histogramBox1.Name = "histogramBox1";
-            this.histogramBox1.Size = new System.Drawing.Size(446, 126);
-            this.histogramBox1.TabIndex = 5;
+            this.cannyToolStripMenuItem.Name = "cannyToolStripMenuItem";
+            this.cannyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cannyToolStripMenuItem.Text = "Canny";
+            this.cannyToolStripMenuItem.Click += new System.EventHandler(this.CannyToolStripMenuItem_Click);
             // 
-            // histogramBox2
+            // sovelToolStripMenuItem
             // 
-            this.histogramBox2.Location = new System.Drawing.Point(457, 90);
-            this.histogramBox2.Name = "histogramBox2";
-            this.histogramBox2.Size = new System.Drawing.Size(446, 126);
-            this.histogramBox2.TabIndex = 6;
+            this.sovelToolStripMenuItem.Name = "sovelToolStripMenuItem";
+            this.sovelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sovelToolStripMenuItem.Text = "Sobel";
+            this.sovelToolStripMenuItem.Click += new System.EventHandler(this.SovelToolStripMenuItem_Click);
             // 
-            // histogramBox3
+            // laplacianToolStripMenuItem
             // 
-            this.histogramBox3.Location = new System.Drawing.Point(457, 268);
-            this.histogramBox3.Name = "histogramBox3";
-            this.histogramBox3.Size = new System.Drawing.Size(446, 126);
-            this.histogramBox3.TabIndex = 7;
+            this.laplacianToolStripMenuItem.Name = "laplacianToolStripMenuItem";
+            this.laplacianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.laplacianToolStripMenuItem.Text = "Laplacian";
+            this.laplacianToolStripMenuItem.Click += new System.EventHandler(this.LaplacianToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 749);
-            this.Controls.Add(this.histogramBox3);
-            this.Controls.Add(this.histogramBox2);
-            this.Controls.Add(this.histogramBox1);
-            this.Controls.Add(this.imageBox2);
-            this.Controls.Add(this.imageBox1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panAndZoomPictureBox1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private Emgu.CV.UI.ImageBox imageBox1;
-        private Emgu.CV.UI.ImageBox imageBox2;
-        private Emgu.CV.UI.HistogramBox histogramBox1;
-        private Emgu.CV.UI.HistogramBox histogramBox2;
-        private Emgu.CV.UI.HistogramBox histogramBox3;
+        private Emgu.CV.UI.PanAndZoomPictureBox panAndZoomPictureBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem edgeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cannyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sovelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem laplacianToolStripMenuItem;
     }
 }
 

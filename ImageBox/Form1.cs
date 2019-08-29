@@ -16,73 +16,59 @@ namespace ImageBox
 {
     public partial class Form1 : Form
     {
-        Image<Bgr, byte> _InputColor;
-        Image<Gray, byte> _InputGray;
+        Image<Bgr, byte> _ImgInput;
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void LoadImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string imagen = "C:\\Users\\josea\\source\\repos\\PlantillaTratamientoImagen\\ImageBox\\img\\lena.jpg";
-            _InputColor = new Image<Bgr, byte>(imagen);
+            OpenFileDialog ofd = new OpenFileDialog();
 
-            if (_InputColor == null)
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("No se cargo la imagen");
-                return;
+                _ImgInput = new Image<Bgr, byte>(ofd.FileName);
+                panAndZoomPictureBox1.Image = _ImgInput.Bitmap;
             }
-
-            imageBox1.Image = _InputColor;
-            // Desactivar click derecho en el programa corriendo.
-            imageBox1.FunctionalMode = Emgu.CV.UI.ImageBox.FunctionalModeOption.Minimum;
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void CannyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Convertir escala de grises.
-            _InputGray = _InputColor.Convert<Gray, byte>();
-            imageBox2.Image = _InputGray;
+            Image<Gray, byte> _ImgCanny = new Image<Gray, byte>(_ImgInput.Width, _ImgInput.Height, new Gray(0));
+            _ImgCanny = _ImgInput.Canny(10, 25);
+            panAndZoomPictureBox1.Image = _ImgCanny.Bitmap;
         }
 
-        private void Button3_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //inicializar variable para determinar rango de color
-            DenseHistogram histcolor = new DenseHistogram(256, new RangeF(0, 255));
-            histcolor.Calculate(new Image<Gray, Byte>[] { _InputColor[0] }, false, null);
-
-            Mat m = new Mat();
-            histcolor.CopyTo(m);
-
-            histogramBox1.AddHistogram("Histograma del Color azul", Color.Blue, m, 256, new float[] { 0, 256 });
-            histogramBox1.Refresh();
+            if (MessageBox.Show("¿Estás seguro de cerrar?", "Cerrar Ventana", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
-        private void Button4_Click(object sender, EventArgs e)
+        private void SovelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //inicializar variable para determinar rango de color
-            DenseHistogram histcolor = new DenseHistogram(256, new RangeF(0, 255));
-            histcolor.Calculate(new Image<Gray, Byte>[] { _InputColor[2] }, false, null);
-
-            Mat m = new Mat();
-            histcolor.CopyTo(m);
-
-            histogramBox2.AddHistogram("Histograma del Color rojo", Color.Red, m, 256, new float[] { 0, 256 });
-            histogramBox2.Refresh();
+            if(_ImgInput != null)
+            {
+                Image<Gray, byte> _ImgGray = _ImgInput.Convert<Gray, byte>();
+                Image<Gray, float> _ImgSobel = new Image<Gray, float>(_ImgInput.Width, _ImgInput.Height, new Gray(0));
+                _ImgSobel = _ImgGray.Sobel(1, 1, 1);
+                panAndZoomPictureBox1.Image = _ImgSobel.Bitmap;
+            }
         }
 
-        private void Button5_Click(object sender, EventArgs e)
+        private void LaplacianToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //inicializar variable para determinar rango de color
-            DenseHistogram histcolor = new DenseHistogram(256, new RangeF(0, 255));
-            histcolor.Calculate(new Image<Gray, Byte>[] { _InputColor[1] }, false, null);
-
-            Mat m = new Mat();
-            histcolor.CopyTo(m);
-
-            histogramBox3.AddHistogram("Histograma del Color verde", Color.Green, m, 256, new float[] { 0, 256 });
-            histogramBox3.Refresh();
+            if (_ImgInput != null)
+            {
+                Image<Gray, byte> _ImgGray = _ImgInput.Convert<Gray, byte>();
+                Image<Gray, float> _ImgLaplace = new Image<Gray, float>(_ImgInput.Width, _ImgInput.Height, new Gray(0));
+                _ImgLaplace = _ImgGray.Laplace(1);
+                panAndZoomPictureBox1.Image = _ImgLaplace.Bitmap;
+            }
         }
     }
 }
