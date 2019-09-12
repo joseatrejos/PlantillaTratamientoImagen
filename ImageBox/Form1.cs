@@ -31,44 +31,53 @@ namespace ImageBox
 
         private void GreenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Inicializar variable para determinar rango de color
-            DenseHistogram histcolor = new DenseHistogram(256, new RangeF(0, 255));
-            histcolor.Calculate(new Image<Gray, Byte>[] { _ImgInput[1] }, false, null);
+            if (_ImgInput != null)
+            {
+                // Inicializar variable para determinar rango de color
+                DenseHistogram histcolor = new DenseHistogram(256, new RangeF(0, 255));
+                histcolor.Calculate(new Image<Gray, Byte>[] { _ImgInput[1] }, false, null);
 
-            Mat m = new Mat();
-            histcolor.CopyTo(m);
+                Mat m = new Mat();
+                histcolor.CopyTo(m);
 
-            histogramBox1.ClearHistogram();
-            histogramBox1.AddHistogram("Histograma del Color verde", Color.Green, m, 256, new float[] { 0, 256 });
-            histogramBox1.Refresh();
+                histogramBox1.ClearHistogram();
+                histogramBox1.AddHistogram("Histograma del Color verde", Color.Green, m, 256, new float[] { 0, 256 });
+                histogramBox1.Refresh();
+            }
         }
 
         private void RedToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Inicializar variable para determinar rango de color
-            DenseHistogram histcolor = new DenseHistogram(256, new RangeF(0, 255));
-            histcolor.Calculate(new Image<Gray, Byte>[] { _ImgInput[2] }, false, null);
+            if (_ImgInput != null)
+            {
+                // Inicializar variable para determinar rango de color
+                DenseHistogram histcolor = new DenseHistogram(256, new RangeF(0, 255));
+                histcolor.Calculate(new Image<Gray, Byte>[] { _ImgInput[2] }, false, null);
 
-            Mat m = new Mat();
-            histcolor.CopyTo(m);
+                Mat m = new Mat();
+                histcolor.CopyTo(m);
 
-            histogramBox1.ClearHistogram();
-            histogramBox1.AddHistogram("Histograma del Color rojo", Color.Red, m, 256, new float[] { 0, 256 });
-            histogramBox1.Refresh();
+                histogramBox1.ClearHistogram();
+                histogramBox1.AddHistogram("Histograma del Color rojo", Color.Red, m, 256, new float[] { 0, 256 });
+                histogramBox1.Refresh();
+            }
         }
 
         private void BlueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Inicializar variable para determinar rango de color
-            DenseHistogram histcolor = new DenseHistogram(256, new RangeF(0, 255));
-            histcolor.Calculate(new Image<Gray, Byte>[] { _ImgInput[0] }, false, null);
+            if (_ImgInput != null)
+            {
+                // Inicializar variable para determinar rango de color
+                DenseHistogram histcolor = new DenseHistogram(256, new RangeF(0, 255));
+                histcolor.Calculate(new Image<Gray, Byte>[] { _ImgInput[0] }, false, null);
 
-            Mat m = new Mat();
-            histcolor.CopyTo(m);
+                Mat m = new Mat();
+                histcolor.CopyTo(m);
 
-            histogramBox1.ClearHistogram();
-            histogramBox1.AddHistogram("Histograma del Color azul", Color.Blue, m, 256, new float[] { 0, 256 });
-            histogramBox1.Refresh();
+                histogramBox1.ClearHistogram();
+                histogramBox1.AddHistogram("Histograma del Color azul", Color.Blue, m, 256, new float[] { 0, 256 });
+                histogramBox1.Refresh();
+            }
         }
 
         private void LoadImageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -92,9 +101,12 @@ namespace ImageBox
 
         private void CannyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Image<Gray, byte> _ImgCanny = new Image<Gray, byte>(_ImgInput.Width, _ImgInput.Height, new Gray(0));
-            _ImgCanny = _ImgInput.Canny(10, 25);
-            panAndZoomPictureBox2.Image = _ImgCanny.Bitmap;
+            if (_ImgInput != null)
+            {
+                Image<Gray, byte> _ImgCanny = new Image<Gray, byte>(_ImgInput.Width, _ImgInput.Height, new Gray(0));
+                _ImgCanny = _ImgInput.Canny(10, 25);
+                panAndZoomPictureBox2.Image = _ImgCanny.Bitmap;
+            }
         }
 
         private void SovelToolStripMenuItem_Click(object sender, EventArgs e)
