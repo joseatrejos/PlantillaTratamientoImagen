@@ -43,6 +43,8 @@
             this.histogramBox1 = new Emgu.CV.UI.HistogramBox();
             this.panAndZoomPictureBox1 = new Emgu.CV.UI.PanAndZoomPictureBox();
             this.panAndZoomPictureBox2 = new Emgu.CV.UI.PanAndZoomPictureBox();
+            this.procesamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filtroPorRangoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox2)).BeginInit();
@@ -53,7 +55,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.histogramToolStripMenuItem,
-            this.filtersToolStripMenuItem});
+            this.filtersToolStripMenuItem,
+            this.procesamientoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1002, 24);
@@ -72,14 +75,14 @@
             // loadImageToolStripMenuItem
             // 
             this.loadImageToolStripMenuItem.Name = "loadImageToolStripMenuItem";
-            this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.loadImageToolStripMenuItem.Text = "Load Image";
             this.loadImageToolStripMenuItem.Click += new System.EventHandler(this.LoadImageToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -170,6 +173,20 @@
             this.panAndZoomPictureBox2.TabIndex = 11;
             this.panAndZoomPictureBox2.TabStop = false;
             // 
+            // procesamientoToolStripMenuItem
+            // 
+            this.procesamientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.filtroPorRangoToolStripMenuItem});
+            this.procesamientoToolStripMenuItem.Name = "procesamientoToolStripMenuItem";
+            this.procesamientoToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.procesamientoToolStripMenuItem.Text = "Procesamiento";
+            // 
+            // filtroPorRangoToolStripMenuItem
+            // 
+            this.filtroPorRangoToolStripMenuItem.Name = "filtroPorRangoToolStripMenuItem";
+            this.filtroPorRangoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.filtroPorRangoToolStripMenuItem.Text = "Filtro por Rango";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,6 +225,8 @@
         private Emgu.CV.UI.HistogramBox histogramBox1;
         private Emgu.CV.UI.PanAndZoomPictureBox panAndZoomPictureBox1;
         private Emgu.CV.UI.PanAndZoomPictureBox panAndZoomPictureBox2;
+        private System.Windows.Forms.ToolStripMenuItem procesamientoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem filtroPorRangoToolStripMenuItem;
     }
 }
 
