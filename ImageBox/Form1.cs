@@ -23,12 +23,41 @@ namespace ImageBox
             InitializeComponent();
         }
 
-
+        // Useless
         private void PanAndZoomPictureBox1_Click(object sender, EventArgs e)
         {
 
         }
+        private void FiltersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        //  FILE
+        // Image Load
+        private void LoadImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                _ImgInput = new Image<Bgr, byte>(ofd.FileName);
+                panAndZoomPictureBox1.Image = _ImgInput.Bitmap;
+                pictureBox1.Image = _ImgInput.Bitmap;
+            }
+        }
+
+        // Exit Button
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Está seguro de que desea cerrar?", "Cerrar Ventana", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        // HISTOGRAMS
+        // Green Histogram
         private void GreenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_ImgInput != null)
@@ -46,6 +75,7 @@ namespace ImageBox
             }
         }
 
+        // Red Histogram
         private void RedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_ImgInput != null)
@@ -63,6 +93,7 @@ namespace ImageBox
             }
         }
 
+        // Blue Histogram
         private void BlueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_ImgInput != null)
@@ -80,25 +111,8 @@ namespace ImageBox
             }
         }
 
-        private void LoadImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                _ImgInput = new Image<Bgr, byte>(ofd.FileName);
-                panAndZoomPictureBox1.Image = _ImgInput.Bitmap;
-            }
-        }
-
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("¿Está seguro de que desea cerrar?", "Cerrar Ventana", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
-
+        // BORDER FILTERS
+        // Canny Filter
         private void CannyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_ImgInput != null)
@@ -109,6 +123,7 @@ namespace ImageBox
             }
         }
 
+        // Sobel Filter
         private void SovelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_ImgInput != null)
@@ -120,6 +135,7 @@ namespace ImageBox
             }
         }
 
+        // Laplacian Filter
         private void LaplacianToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_ImgInput != null)
@@ -130,9 +146,15 @@ namespace ImageBox
                 panAndZoomPictureBox2.Image = _ImgLaplace.Bitmap;
             }
         }
-
-        private void FiltersToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        // PROCESSING FILTERS
+        // Range Filter
+        private void FiltroPorRangoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Popup Window
+            Parametros fp = new Parametros(this);
+            fp.Show();
+
 
         }
     }

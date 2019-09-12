@@ -40,14 +40,18 @@
             this.cannyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sovelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.laplacianToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.procesamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filtroPorRangoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramBox1 = new Emgu.CV.UI.HistogramBox();
             this.panAndZoomPictureBox1 = new Emgu.CV.UI.PanAndZoomPictureBox();
             this.panAndZoomPictureBox2 = new Emgu.CV.UI.PanAndZoomPictureBox();
-            this.procesamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filtroPorRangoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -59,7 +63,7 @@
             this.procesamientoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1002, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1101, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -149,9 +153,24 @@
             this.laplacianToolStripMenuItem.Text = "Laplacian";
             this.laplacianToolStripMenuItem.Click += new System.EventHandler(this.LaplacianToolStripMenuItem_Click);
             // 
+            // procesamientoToolStripMenuItem
+            // 
+            this.procesamientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.filtroPorRangoToolStripMenuItem});
+            this.procesamientoToolStripMenuItem.Name = "procesamientoToolStripMenuItem";
+            this.procesamientoToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.procesamientoToolStripMenuItem.Text = "Procesamiento";
+            // 
+            // filtroPorRangoToolStripMenuItem
+            // 
+            this.filtroPorRangoToolStripMenuItem.Name = "filtroPorRangoToolStripMenuItem";
+            this.filtroPorRangoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.filtroPorRangoToolStripMenuItem.Text = "Filtro por Rango";
+            this.filtroPorRangoToolStripMenuItem.Click += new System.EventHandler(this.FiltroPorRangoToolStripMenuItem_Click);
+            // 
             // histogramBox1
             // 
-            this.histogramBox1.Location = new System.Drawing.Point(542, 126);
+            this.histogramBox1.Location = new System.Drawing.Point(502, 74);
             this.histogramBox1.Name = "histogramBox1";
             this.histogramBox1.Size = new System.Drawing.Size(328, 120);
             this.histogramBox1.TabIndex = 9;
@@ -173,25 +192,29 @@
             this.panAndZoomPictureBox2.TabIndex = 11;
             this.panAndZoomPictureBox2.TabStop = false;
             // 
-            // procesamientoToolStripMenuItem
+            // pictureBox1
             // 
-            this.procesamientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.filtroPorRangoToolStripMenuItem});
-            this.procesamientoToolStripMenuItem.Name = "procesamientoToolStripMenuItem";
-            this.procesamientoToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
-            this.procesamientoToolStripMenuItem.Text = "Procesamiento";
+            this.pictureBox1.Location = new System.Drawing.Point(352, 287);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(348, 389);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
-            // filtroPorRangoToolStripMenuItem
+            // pictureBox2
             // 
-            this.filtroPorRangoToolStripMenuItem.Name = "filtroPorRangoToolStripMenuItem";
-            this.filtroPorRangoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.filtroPorRangoToolStripMenuItem.Text = "Filtro por Rango";
+            this.pictureBox2.Location = new System.Drawing.Point(725, 287);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(348, 389);
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 749);
+            this.ClientSize = new System.Drawing.Size(1101, 749);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panAndZoomPictureBox2);
             this.Controls.Add(this.panAndZoomPictureBox1);
             this.Controls.Add(this.histogramBox1);
@@ -203,6 +226,8 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,6 +252,8 @@
         private Emgu.CV.UI.PanAndZoomPictureBox panAndZoomPictureBox2;
         private System.Windows.Forms.ToolStripMenuItem procesamientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filtroPorRangoToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
