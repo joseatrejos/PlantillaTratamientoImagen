@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace ImageBox
 {
-    public partial class Parametros : Form
+    public partial class ParametrosRange : Form
     {
         Form1 form;
-        public Parametros(Form1 f)
+        public ParametrosRange(Form1 f)
         {
             InitializeComponent();
             form = f;
@@ -22,7 +22,10 @@ namespace ImageBox
         // Apply Changes to Filter
         private void Button1_Click(object sender, EventArgs e)
         {
-
+            if(form != null)
+            {
+                form.AplicarRangeFilter(trackBar1.Value, trackBar2.Value);
+            }
         }
 
         // Close Popup Window

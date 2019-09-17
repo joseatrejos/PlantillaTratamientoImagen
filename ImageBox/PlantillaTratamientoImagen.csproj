@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ImageBox</RootNamespace>
     <AssemblyName>ImageBox</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -85,19 +86,28 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Parametros.cs">
+    <Compile Include="ParametrosRange.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Parametros.Designer.cs">
-      <DependentUpon>Parametros.cs</DependentUpon>
+    <Compile Include="ParametrosRange.Designer.cs">
+      <DependentUpon>ParametrosRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParametrosOverlay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParametrosOverlay.Designer.cs">
+      <DependentUpon>ParametrosOverlay.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Parametros.resx">
-      <DependentUpon>Parametros.cs</DependentUpon>
+    <EmbeddedResource Include="ParametrosOverlay.resx">
+      <DependentUpon>ParametrosOverlay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParametrosRange.resx">
+      <DependentUpon>ParametrosRange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\ImageBox.Form1.resources" />
     <EmbeddedResource Include="obj\Debug\ImageBox.Properties.Resources.resources" />
@@ -111,6 +121,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="bin\Debug\ImageBox.exe.config" />
     <None Include="bin\x64\Debug\ImageBox.exe.config" />

@@ -1,6 +1,6 @@
 ﻿namespace ImageBox
 {
-    partial class Parametros
+    partial class ParametrosRange
     {
         /// <summary>
         /// Required designer variable.

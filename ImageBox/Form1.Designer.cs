@@ -47,6 +47,7 @@
             this.panAndZoomPictureBox2 = new Emgu.CV.UI.PanAndZoomPictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.overlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox2)).BeginInit();
@@ -135,28 +136,29 @@
             // cannyToolStripMenuItem
             // 
             this.cannyToolStripMenuItem.Name = "cannyToolStripMenuItem";
-            this.cannyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cannyToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.cannyToolStripMenuItem.Text = "Canny";
             this.cannyToolStripMenuItem.Click += new System.EventHandler(this.CannyToolStripMenuItem_Click);
             // 
             // sovelToolStripMenuItem
             // 
             this.sovelToolStripMenuItem.Name = "sovelToolStripMenuItem";
-            this.sovelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sovelToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.sovelToolStripMenuItem.Text = "Sobel";
             this.sovelToolStripMenuItem.Click += new System.EventHandler(this.SovelToolStripMenuItem_Click);
             // 
             // laplacianToolStripMenuItem
             // 
             this.laplacianToolStripMenuItem.Name = "laplacianToolStripMenuItem";
-            this.laplacianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.laplacianToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.laplacianToolStripMenuItem.Text = "Laplacian";
             this.laplacianToolStripMenuItem.Click += new System.EventHandler(this.LaplacianToolStripMenuItem_Click);
             // 
             // procesamientoToolStripMenuItem
             // 
             this.procesamientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.filtroPorRangoToolStripMenuItem});
+            this.filtroPorRangoToolStripMenuItem,
+            this.overlayToolStripMenuItem});
             this.procesamientoToolStripMenuItem.Name = "procesamientoToolStripMenuItem";
             this.procesamientoToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.procesamientoToolStripMenuItem.Text = "Procesamiento";
@@ -208,6 +210,13 @@
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
+            // overlayToolStripMenuItem
+            // 
+            this.overlayToolStripMenuItem.Name = "overlayToolStripMenuItem";
+            this.overlayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.overlayToolStripMenuItem.Text = "Overlay";
+            this.overlayToolStripMenuItem.Click += new System.EventHandler(this.overlayToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,6 +263,7 @@
         private System.Windows.Forms.ToolStripMenuItem filtroPorRangoToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripMenuItem overlayToolStripMenuItem;
     }
 }
 

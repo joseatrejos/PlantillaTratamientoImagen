@@ -15,3 +15,4 @@ C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\Plant
 C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\PlantillaTratamientoImagen.csproj.CopyComplete
 C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.exe
 C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.pdb
+C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.Parametros.resources

@@ -32,8 +32,9 @@ namespace ImageBox
         {
 
         }
+        // Useless End
 
-        //  FILE
+        // -  FILE -
         // Image Load
         private void LoadImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -41,9 +42,13 @@ namespace ImageBox
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                // Show the Picture in the 1st PanAndZoomPictureBox
                 _ImgInput = new Image<Bgr, byte>(ofd.FileName);
                 panAndZoomPictureBox1.Image = _ImgInput.Bitmap;
-                pictureBox1.Image = _ImgInput.Bitmap;
+                
+                // Clear the rest of the displays
+                histogramBox1.ClearHistogram();
+                histogramBox1.Refresh();
             }
         }
 
@@ -55,8 +60,9 @@ namespace ImageBox
                 this.Close();
             }
         }
+        // -  FILE End -
 
-        // HISTOGRAMS
+        // - HISTOGRAMS -
         // Green Histogram
         private void GreenToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -110,8 +116,9 @@ namespace ImageBox
                 histogramBox1.Refresh();
             }
         }
+        // - HISTOGRAMS End -
 
-        // BORDER FILTERS
+        // - BORDER FILTERS -
         // Canny Filter
         private void CannyToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -146,16 +153,69 @@ namespace ImageBox
                 panAndZoomPictureBox2.Image = _ImgLaplace.Bitmap;
             }
         }
-        
-        // PROCESSING FILTERS
+        // - BORDER FILTERS End -
+
+        // - PROCESSING FILTERS -
         // Range Filter
         private void FiltroPorRangoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Popup Window
-            Parametros fp = new Parametros(this);
-            fp.Show();
+            if (_ImgInput != null)
+            {
+                // Make another ImageBox appear to compare the original state with the applied effect
+                pictureBox1.Image = _ImgInput.Bitmap;
 
-
+                // Popup Window
+                ParametrosRange fp = new ParametrosRange(this);
+                fp.Show();
+            }
         }
+
+        // Función propia para aplicar el filtro con los datos de la otra ventana (mandados habiendo heredado este Form1 en el form Parametros)
+        public void AplicarRangeFilter(int min, int max)
+        {
+            try
+            {
+                Image<Gray, byte> _ImgGray = _ImgInput.Convert<Gray, byte>().InRange(new Gray(min), new Gray(max));
+                pictureBox2.Image = _ImgGray.Bitmap;
+                pictureBox2.Invalidate();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error " + ex.Message);
+            }
+        }
+
+        // Overlay Filter
+        private void overlayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_ImgInput != null)
+            {
+                // Make another ImageBox appear to overlay a clone of it with an effect applied
+                Image<Gray, byte> _ImgGray = _ImgInput.Convert<Gray, byte>();
+                Image<Bgr, byte> temp = _ImgInput.Clone();
+                temp.SetValue(new Bgr(0, 0, 255), _ImgGray);
+                pictureBox2.Image = _ImgGray.Bitmap;
+
+                // Popup Window
+                ParametrosOverlay fp = new ParametrosOverlay(this);
+                fp.Show();
+            }
+        }
+
+        // Función propia para aplicar el filtro con los datos de la otra ventana (mandados habiendo heredado este Form1 en el form Parametros)
+        public void AplicarOverlay(int min, int max)
+        {
+            try
+            {
+                Image<Gray, byte> _ImgGray = _ImgInput.Convert<Gray, byte>().InRange(new Gray(min), new Gray(max));
+                pictureBox2.Image = _ImgGray.Bitmap;
+                pictureBox2.Invalidate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex.Message);
+            }
+        }
+        // - PROCESSING FILTERS End -
     }
 }
