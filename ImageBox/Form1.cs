@@ -190,6 +190,8 @@ namespace ImageBox
         {
             if (_ImgInput != null)
             {
+                pictureBox1.Image = _ImgInput.Bitmap;
+
                 // Make another ImageBox appear to overlay a clone of it with an effect applied
                 Image<Gray, byte> _ImgGray = _ImgInput.Convert<Gray, byte>();
                 Image<Bgr, byte> temp = _ImgInput.Clone();
@@ -203,18 +205,23 @@ namespace ImageBox
         }
 
         // Función propia para aplicar el filtro con los datos de la otra ventana (mandados habiendo heredado este Form1 en el form Parametros)
-        public void AplicarOverlay(int min, int max)
+        public void AplicarOverlay(int rojo, int verde, int azul)
         {
-            try
+            if(pictureBox1.Image != null)
             {
-                Image<Gray, byte> _ImgGray = _ImgInput.Convert<Gray, byte>().InRange(new Gray(min), new Gray(max));
-                pictureBox2.Image = _ImgGray.Bitmap;
-                pictureBox2.Invalidate();
+                try
+                {
+                    Image<Gray, byte> _ImgGray = _ImgInput.Convert<Gray, byte>();
+                    Image<Bgr, byte> temp = _ImgInput.Clone();
+                    temp.SetValue(new Bgr(azul, verde, rojo), _ImgGray);
+                    pictureBox2.Image = temp.Bitmap;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error " + ex.Message);
-            }
+            
         }
         // - PROCESSING FILTERS End -
     }

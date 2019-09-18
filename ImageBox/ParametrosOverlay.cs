@@ -24,7 +24,7 @@ namespace ImageBox
         {
             if (form != null)
             {
-                form.AplicarOverlay(trackBar1.Value, trackBar2.Value);
+                form.AplicarOverlay(trackBar1.Value, trackBar2.Value, trackBar3.Value);
             }
         }
         
