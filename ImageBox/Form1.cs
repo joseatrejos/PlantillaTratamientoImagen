@@ -224,5 +224,17 @@ namespace ImageBox
             
         }
         // - PROCESSING FILTERS End -
+
+        // - CONTORNOS -
+        // Detect
+        private void DetectarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Binarización
+            Image<Gray, byte> _imgOutput = _ImgInput.Convert<Gray, byte>().ThresholdBinary(new Gray(100), new Gray(255));
+            Emgu.CV.Util.VectorOfVectorOfPoint countours = new Emgu.CV.Util.VectorOfVectorOfPoint();
+            Mat hier = new Mat();
+
+            CvInvoke.FindContours(_imgOutput, countours, hier, Emgu.CV.CvArray.Enum.RetryType.External);
+        }
     }
 }
