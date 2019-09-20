@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Emgu;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using Emgu.CV.Util;
 
 namespace ImageBox
 {
@@ -234,7 +235,51 @@ namespace ImageBox
             Emgu.CV.Util.VectorOfVectorOfPoint countours = new Emgu.CV.Util.VectorOfVectorOfPoint();
             Mat hier = new Mat();
 
-            CvInvoke.FindContours(_imgOutput, countours, hier, Emgu.CV.CvArray.Enum.RetryType.External);
+            //CvInvoke.FindContours(_imgOutput, countours, hier, Emgu.CV.
+                
+            //CvArray.Enum.RetryType.External);
+        }
+
+        private void DetectarFormasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(_ImgInput != null)
+            {
+                try
+                {
+                    // Suaviza la imagen y aplica binarización, almacenándola en una variable temporal
+                    var temp = _ImgInput.SmoothGaussian(5).Convert<Gray, byte>().ThresholdBinaryInv(new Gray(230), new Gray(255));
+
+                    VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+                    Mat m = new Mat();
+
+                    // Aplicar función FindContours para detectar los contornos de las figuras
+                    CvInvoke.FindContours(temp, contours, m, Emgu.CV.CvEnum.RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxNone);
+
+                    for (int i = 0; i < contours.Size; i++)
+                    {
+                        double perimetro = CvInvoke.ArcLength(contours[i], true);
+                        VectorOfVectorOfPoint approx = new VectorOfVectorOfPoint();
+
+                        // Detección de curvas en función a una precisión indicada eje (0.04)
+                        CvInvoke.ApproxPolyDP(contours[1], approx, 0.04 * perimetro, true);
+                        CvInvoke.DrawContours(_ImgInput, contours, i, new MCvScalar(0, 0, 255), 2);
+
+                        // Encontrar centro de la figura
+                        var momentos = CvInvoke.Moments(contours[i]);
+                        int x = (int)(momentos.M10 / momentos.M00);
+                        int y = (int)(momentos.M01 / momentos.M00);
+
+                        if(approx.Size == 3)
+                        {
+                            CvInvoke.PutText(_ImgInput, "Triangulo", new Point(x, y), Emgu.CV.CvEnum.FontFace.HersheySimplex, 0.5, new MCvScalar(0, 0, 255), 2);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error " + ex.Message);
+                }
+            }
         }
     }
 }
