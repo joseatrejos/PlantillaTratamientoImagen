@@ -230,22 +230,30 @@ namespace ImageBox
         // Detect
         private void DetectarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Binarización
-            Image<Gray, byte> _imgOutput = _ImgInput.Convert<Gray, byte>().ThresholdBinary(new Gray(100), new Gray(255));
-            Emgu.CV.Util.VectorOfVectorOfPoint countours = new Emgu.CV.Util.VectorOfVectorOfPoint();
+            // Make another ImageBox appear to compare the original state with the applied effect
+            pictureBox1.Image = _ImgInput.Bitmap;
+
+            //Binarizacion
+            Image<Gray, byte> _imgOutput = _ImgInput.Convert<Gray, byte>().ThresholdBinary(new Gray(200), new Gray(255));
+            Emgu.CV.Util.VectorOfVectorOfPoint contours = new Emgu.CV.Util.VectorOfVectorOfPoint();
             Mat hier = new Mat();
 
-            //CvInvoke.FindContours(_imgOutput, countours, hier, Emgu.CV.
-                
-            //CvArray.Enum.RetryType.External);
+            //Encontrat los contornos en la imagen
+            CvInvoke.FindContours(_imgOutput, contours, hier, Emgu.CV.CvEnum.RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxSimple);
+            CvInvoke.DrawContours(_imgOutput, contours, -1, new MCvScalar(255, 0, 0));
+
+            pictureBox2.Image = _imgOutput.Bitmap;
         }
 
-        private void DetectarFormasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DetectarFormasToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            if(_ImgInput != null)
+            if (_ImgInput != null)
             {
                 try
                 {
+                    // Make another ImageBox appear to compare the original state with the applied effect
+                    pictureBox1.Image = _ImgInput.Bitmap;
+
                     // Suaviza la imagen y aplica binarización, almacenándola en una variable temporal
                     var temp = _ImgInput.SmoothGaussian(5).Convert<Gray, byte>().ThresholdBinaryInv(new Gray(230), new Gray(255));
 
@@ -258,7 +266,7 @@ namespace ImageBox
                     for (int i = 0; i < contours.Size; i++)
                     {
                         double perimetro = CvInvoke.ArcLength(contours[i], true);
-                        VectorOfVectorOfPoint approx = new VectorOfVectorOfPoint();
+                        VectorOfPoint approx = new VectorOfPoint();
 
                         // Detección de curvas en función a una precisión indicada eje (0.04)
                         CvInvoke.ApproxPolyDP(contours[1], approx, 0.04 * perimetro, true);
@@ -269,10 +277,48 @@ namespace ImageBox
                         int x = (int)(momentos.M10 / momentos.M00);
                         int y = (int)(momentos.M01 / momentos.M00);
 
-                        if(approx.Size == 3)
+                        // Detección de Triángulos
+                        if (approx.Size == 3)
                         {
                             CvInvoke.PutText(_ImgInput, "Triangulo", new Point(x, y), Emgu.CV.CvEnum.FontFace.HersheySimplex, 0.5, new MCvScalar(0, 0, 255), 2);
                         }
+
+                        // Detección de Cuadrados y Rectángulos
+                        if (approx.Size == 4)
+                        {
+                            Rectangle rect = CvInvoke.BoundingRectangle(contours[i]);
+
+                            double ar = (double)rect.Width / rect.Height;
+
+                            if (ar >= 0.95 && ar <= 1.05)
+                            {
+                                CvInvoke.PutText(_ImgInput, "Cuadrado", new Point(x, y), Emgu.CV.CvEnum.FontFace.HersheySimplex, 0.5, new MCvScalar(0, 0, 255), 2);
+                            }
+                            else
+                            {
+                                CvInvoke.PutText(_ImgInput, "Rectángulo", new Point(x, y), Emgu.CV.CvEnum.FontFace.HersheySimplex, 0.5, new MCvScalar(0, 0, 255), 2);
+                            }
+                        }
+
+                        // Detección de Pentágonos
+                        if (approx.Size == 5)
+                        {
+                            CvInvoke.PutText(_ImgInput, "Hexágono", new Point(x, y), Emgu.CV.CvEnum.FontFace.HersheySimplex, 0.5, new MCvScalar(0, 0, 255), 2);
+                        }
+
+                        // Detección de Hexágonos
+                        if (approx.Size == 6)
+                        {
+                            CvInvoke.PutText(_ImgInput, "Hexágono", new Point(x, y), Emgu.CV.CvEnum.FontFace.HersheySimplex, 0.5, new MCvScalar(0, 0, 255), 2);
+                        }
+
+                        // Detección de Círculos
+                        if (approx.Size > 6)
+                        {
+                            CvInvoke.PutText(_ImgInput, "Círculo", new Point(x, y), Emgu.CV.CvEnum.FontFace.HersheySimplex, 0.5, new MCvScalar(0, 0, 255), 2);
+                        }
+
+                        pictureBox2.Image = _ImgInput.Bitmap;
                     }
                 }
                 catch (Exception ex)

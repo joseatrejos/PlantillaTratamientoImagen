@@ -15,7 +15,6 @@ C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\Plant
 C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\PlantillaTratamientoImagen.csproj.CopyComplete
 C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.exe
 C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.pdb
-C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.Parametros.resources
 C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\bin\Debug\ImageBox.exe.config
 C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\bin\Debug\ImageBox.exe
 C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\bin\Debug\ImageBox.pdb
@@ -35,3 +34,5 @@ C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\Plantill
 C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\PlantillaTratamientoImagen.csproj.CopyComplete
 C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.exe
 C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.pdb
+C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.ParametrosOverlay.resources
+C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.ParametrosRange.resources
