@@ -41,6 +41,8 @@ namespace ImageBox
                 // Clear the rest of the displays
                 histogramBox1.ClearHistogram();
                 histogramBox1.Refresh();
+                pictureBox1.Image = null;
+                pictureBox2.Image = null;
             }
         }
 
@@ -329,11 +331,13 @@ namespace ImageBox
             VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
             Mat hier = new Mat();
 
+            pictureBox1.Image = _ImgInput.Bitmap;
+
             CvInvoke.FindContours(imgOutput, contours, hier, Emgu.CV.CvEnum.RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxSimple);
             show = true;
             if (contours.Size > 0)
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < contours.Size; i++)
                 {
                     Rectangle rect = CvInvoke.BoundingRectangle(contours[i]);
                     _ImgInput.ROI = rect;
@@ -342,7 +346,7 @@ namespace ImageBox
                     _ImgInput.ROI = Rectangle.Empty;
                     this.Invalidate();
 
-                    await Task.Delay(500);
+                    await Task.Delay(1500);
                 }
                 show = false;
             }
