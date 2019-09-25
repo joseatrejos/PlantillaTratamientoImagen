@@ -45,12 +45,13 @@
             this.overlayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contornosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detectarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detectarFormasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramBox1 = new Emgu.CV.UI.HistogramBox();
             this.panAndZoomPictureBox1 = new Emgu.CV.UI.PanAndZoomPictureBox();
             this.panAndZoomPictureBox2 = new Emgu.CV.UI.PanAndZoomPictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.detectarFormasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detectarTextoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox2)).BeginInit();
@@ -137,26 +138,25 @@
             this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
             this.filtersToolStripMenuItem.Size = new System.Drawing.Size(155, 20);
             this.filtersToolStripMenuItem.Text = "Border Recognition Filters";
-            this.filtersToolStripMenuItem.Click += new System.EventHandler(this.FiltersToolStripMenuItem_Click);
             // 
             // cannyToolStripMenuItem
             // 
             this.cannyToolStripMenuItem.Name = "cannyToolStripMenuItem";
-            this.cannyToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.cannyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cannyToolStripMenuItem.Text = "Canny";
             this.cannyToolStripMenuItem.Click += new System.EventHandler(this.CannyToolStripMenuItem_Click);
             // 
             // sovelToolStripMenuItem
             // 
             this.sovelToolStripMenuItem.Name = "sovelToolStripMenuItem";
-            this.sovelToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.sovelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sovelToolStripMenuItem.Text = "Sobel";
             this.sovelToolStripMenuItem.Click += new System.EventHandler(this.SovelToolStripMenuItem_Click);
             // 
             // laplacianToolStripMenuItem
             // 
             this.laplacianToolStripMenuItem.Name = "laplacianToolStripMenuItem";
-            this.laplacianToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.laplacianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.laplacianToolStripMenuItem.Text = "Laplacian";
             this.laplacianToolStripMenuItem.Click += new System.EventHandler(this.LaplacianToolStripMenuItem_Click);
             // 
@@ -172,14 +172,14 @@
             // filtroPorRangoToolStripMenuItem
             // 
             this.filtroPorRangoToolStripMenuItem.Name = "filtroPorRangoToolStripMenuItem";
-            this.filtroPorRangoToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.filtroPorRangoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.filtroPorRangoToolStripMenuItem.Text = "Filtro por Rango";
             this.filtroPorRangoToolStripMenuItem.Click += new System.EventHandler(this.FiltroPorRangoToolStripMenuItem_Click);
             // 
             // overlayToolStripMenuItem
             // 
             this.overlayToolStripMenuItem.Name = "overlayToolStripMenuItem";
-            this.overlayToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.overlayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.overlayToolStripMenuItem.Text = "Overlay";
             this.overlayToolStripMenuItem.Click += new System.EventHandler(this.overlayToolStripMenuItem_Click);
             // 
@@ -187,7 +187,8 @@
             // 
             this.contornosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.detectarToolStripMenuItem,
-            this.detectarFormasToolStripMenuItem});
+            this.detectarFormasToolStripMenuItem,
+            this.detectarTextoToolStripMenuItem});
             this.contornosToolStripMenuItem.Name = "contornosToolStripMenuItem";
             this.contornosToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.contornosToolStripMenuItem.Text = "Contornos";
@@ -195,14 +196,21 @@
             // detectarToolStripMenuItem
             // 
             this.detectarToolStripMenuItem.Name = "detectarToolStripMenuItem";
-            this.detectarToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.detectarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.detectarToolStripMenuItem.Text = "Detectar";
             this.detectarToolStripMenuItem.Click += new System.EventHandler(this.DetectarToolStripMenuItem_Click);
+            // 
+            // detectarFormasToolStripMenuItem
+            // 
+            this.detectarFormasToolStripMenuItem.Name = "detectarFormasToolStripMenuItem";
+            this.detectarFormasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.detectarFormasToolStripMenuItem.Text = "Detectar Formas";
+            this.detectarFormasToolStripMenuItem.Click += new System.EventHandler(this.DetectarFormasToolStripMenuItem_Click_1);
             // 
             // histogramBox1
             // 
             this.histogramBox1.Location = new System.Drawing.Point(502, 74);
-            this.histogramBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.histogramBox1.Margin = new System.Windows.Forms.Padding(4);
             this.histogramBox1.Name = "histogramBox1";
             this.histogramBox1.Size = new System.Drawing.Size(328, 120);
             this.histogramBox1.TabIndex = 9;
@@ -214,7 +222,6 @@
             this.panAndZoomPictureBox1.Size = new System.Drawing.Size(290, 292);
             this.panAndZoomPictureBox1.TabIndex = 10;
             this.panAndZoomPictureBox1.TabStop = false;
-            this.panAndZoomPictureBox1.Click += new System.EventHandler(this.PanAndZoomPictureBox1_Click);
             // 
             // panAndZoomPictureBox2
             // 
@@ -240,12 +247,12 @@
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
-            // detectarFormasToolStripMenuItem
+            // detectarTextoToolStripMenuItem
             // 
-            this.detectarFormasToolStripMenuItem.Name = "detectarFormasToolStripMenuItem";
-            this.detectarFormasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.detectarFormasToolStripMenuItem.Text = "Detectar Formas";
-            this.detectarFormasToolStripMenuItem.Click += new System.EventHandler(this.DetectarFormasToolStripMenuItem_Click_1);
+            this.detectarTextoToolStripMenuItem.Name = "detectarTextoToolStripMenuItem";
+            this.detectarTextoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.detectarTextoToolStripMenuItem.Text = "Detectar Texto";
+            this.detectarTextoToolStripMenuItem.Click += new System.EventHandler(this.detectarTextoToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -261,6 +268,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).EndInit();
@@ -297,6 +305,7 @@
         private System.Windows.Forms.ToolStripMenuItem contornosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detectarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detectarFormasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detectarTextoToolStripMenuItem;
     }
 }
 

@@ -18,22 +18,13 @@ namespace ImageBox
     public partial class Form1 : Form
     {
         Image<Bgr, byte> _ImgInput;
+        Bitmap image;
+        bool show = false;
 
         public Form1()
         {
             InitializeComponent();
         }
-
-        // Useless
-        private void PanAndZoomPictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void FiltersToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-        // Useless End
 
         // -  FILE -
         // Image Load
@@ -329,6 +320,39 @@ namespace ImageBox
                 {
                     MessageBox.Show("Error " + ex.Message);
                 }
+            }
+        }
+
+        private async void detectarTextoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Image<Gray, byte> imgOutput = _ImgInput.Convert<Gray, byte>().Not().ThresholdBinary(new Gray(50), new Gray(255));
+            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+            Mat hier = new Mat();
+
+            CvInvoke.FindContours(imgOutput, contours, hier, Emgu.CV.CvEnum.RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxSimple);
+            show = true;
+            if (contours.Size > 0)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    Rectangle rect = CvInvoke.BoundingRectangle(contours[i]);
+                    _ImgInput.ROI = rect;
+
+                    image = _ImgInput.Copy().Bitmap;
+                    _ImgInput.ROI = Rectangle.Empty;
+                    this.Invalidate();
+
+                    await Task.Delay(500);
+                }
+                show = false;
+            }
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            if (show == true)
+            {
+                pictureBox2.Image = image;
             }
         }
     }
