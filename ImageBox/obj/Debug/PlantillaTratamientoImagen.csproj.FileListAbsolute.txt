@@ -36,3 +36,4 @@ C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox
 C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.pdb
 C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.ParametrosOverlay.resources
 C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.ParametrosRange.resources
+C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\Debug\ImageBox.PopupVideo.resources

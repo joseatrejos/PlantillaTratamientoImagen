@@ -241,6 +241,7 @@ namespace ImageBox
             }
         }
 
+        // Detección de Figuras
         private void DetectarFormasToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (_ImgInput != null)
@@ -325,6 +326,7 @@ namespace ImageBox
             }
         }
 
+        // Detección de Texto
         private async void detectarTextoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Image<Gray, byte> imgOutput = _ImgInput.Convert<Gray, byte>().Not().ThresholdBinary(new Gray(50), new Gray(255));
@@ -351,13 +353,22 @@ namespace ImageBox
                 show = false;
             }
         }
-
+         
+        // Pintado del la letra reconocida
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             if (show == true)
             {
                 pictureBox2.Image = image;
             }
+        }
+
+        // Popup para agregar video
+        private void loadVideoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Popup Window
+            PopupVideo pv = new PopupVideo(this);
+            pv.Show();
         }
     }
 }
