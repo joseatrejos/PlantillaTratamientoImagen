@@ -228,12 +228,12 @@ namespace ImageBox
                 // Make another ImageBox appear to compare the original state with the applied effect
                 pictureBox1.Image = _ImgInput.Bitmap;
 
-                //Binarizacion
+                // Binarizacion
                 Image<Gray, byte> _imgOutput = _ImgInput.Convert<Gray, byte>().ThresholdBinary(new Gray(200), new Gray(255));
                 Emgu.CV.Util.VectorOfVectorOfPoint contours = new Emgu.CV.Util.VectorOfVectorOfPoint();
                 Mat hier = new Mat();
 
-                //Encontrat los contornos en la imagen
+                // Encontrar los contornos en la imagen
                 CvInvoke.FindContours(_imgOutput, contours, hier, Emgu.CV.CvEnum.RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxSimple);
                 CvInvoke.DrawContours(_imgOutput, contours, -1, new MCvScalar(255, 0, 0));
 
@@ -370,5 +370,6 @@ namespace ImageBox
             PopupVideo pv = new PopupVideo(this);
             pv.Show();
         }
+
     }
 }

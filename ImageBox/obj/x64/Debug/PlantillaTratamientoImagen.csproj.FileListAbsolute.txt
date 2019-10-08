@@ -90,3 +90,4 @@ C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\x64\Debug\Plan
 C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\x64\Debug\PlantillaTratamientoImagen.csproj.CopyComplete
 C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\x64\Debug\ImageBox.exe
 C:\Users\Fer\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\x64\Debug\ImageBox.pdb
+C:\Users\alumno\Source\Repos\PlantillaTratamientoImagen\ImageBox\obj\x64\Debug\ImageBox.PopupVideo.resources
