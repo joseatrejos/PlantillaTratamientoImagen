@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 using Emgu;
 using Emgu.CV;
@@ -329,28 +331,31 @@ namespace ImageBox
         // Detección de Texto
         private async void detectarTextoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Image<Gray, byte> imgOutput = _ImgInput.Convert<Gray, byte>().Not().ThresholdBinary(new Gray(50), new Gray(255));
-            VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
-            Mat hier = new Mat();
-
-            pictureBox1.Image = _ImgInput.Bitmap;
-
-            CvInvoke.FindContours(imgOutput, contours, hier, Emgu.CV.CvEnum.RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxSimple);
-            show = true;
-            if (contours.Size > 0)
+            if (_ImgInput != null)
             {
-                for (int i = 0; i < contours.Size; i++)
+                Image<Gray, byte> imgOutput = _ImgInput.Convert<Gray, byte>().Not().ThresholdBinary(new Gray(50), new Gray(255));
+                VectorOfVectorOfPoint contours = new VectorOfVectorOfPoint();
+                Mat hier = new Mat();
+
+                pictureBox1.Image = _ImgInput.Bitmap;
+
+                CvInvoke.FindContours(imgOutput, contours, hier, Emgu.CV.CvEnum.RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxSimple);
+                show = true;
+                if (contours.Size > 0)
                 {
-                    Rectangle rect = CvInvoke.BoundingRectangle(contours[i]);
-                    _ImgInput.ROI = rect;
+                    for (int i = 0; i < contours.Size; i++)
+                    {
+                        Rectangle rect = CvInvoke.BoundingRectangle(contours[i]);
+                        _ImgInput.ROI = rect;
 
-                    image = _ImgInput.Copy().Bitmap;
-                    _ImgInput.ROI = Rectangle.Empty;
-                    this.Invalidate();
+                        image = _ImgInput.Copy().Bitmap;
+                        _ImgInput.ROI = Rectangle.Empty;
+                        this.Invalidate();
 
-                    await Task.Delay(1500);
+                        await Task.Delay(1500);
+                    }
+                    show = false;
                 }
-                show = false;
             }
         }
          
@@ -371,5 +376,57 @@ namespace ImageBox
             pv.Show();
         }
 
+        // Falta vincular esto con un botón
+        private void detectar()
+        {
+            if (_ImgInput != null)
+            {
+                detectarFace();
+            }
+            else
+                throw new Exception("Selecciona una imagen carnal");
+        }
+
+        // Face/Eye Detection
+        public void detectarFace()
+        {
+            try
+            {
+                string facePath = Path.GetFullPath("C:\\Users\\alumno\\Descargas\\haarcascade_frontalface_default.xml");
+                string eyePath = Path.GetFullPath("C:\\Users\\alumno\\Descargas\\haarcascade_eye.xml");
+
+                CascadeClassifier classifierFace = new CascadeClassifier(facePath);
+                CascadeClassifier classifierEye = new CascadeClassifier(eyePath);
+
+                // Face Recognition
+                var imgGray = _ImgInput.Convert<Gray, byte>().Clone();
+                Rectangle[] faces = classifierFace.DetectMultiScale(imgGray, 1.1, 3);
+
+                foreach(var face in faces)
+                {
+                    _ImgInput.Draw(face, new Bgr(0, 0, 200), 2);
+
+                    imgGray.ROI = face;
+                }
+
+                pictureBox1.Image = _ImgInput.Bitmap;
+
+                // Eye Recognition
+                Rectangle[] eyes = classifierEye.DetectMultiScale(imgGray, 1.1, 3);
+
+                foreach (var eye in eyes)
+                {
+                    _ImgInput.Draw(eye, new Bgr(0, 0, 200), 2);
+
+                    imgGray.ROI = eye;
+                }
+
+                pictureBox2.Image = _ImgInput.Bitmap;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
