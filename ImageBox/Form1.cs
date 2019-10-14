@@ -222,7 +222,7 @@ namespace ImageBox
         // - PROCESSING FILTERS End -
 
         // - CONTORNOS -
-        // Detect
+        // Detect Objects
         private void DetectarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_ImgInput != null)
@@ -380,29 +380,41 @@ namespace ImageBox
         private void detectar()
         {
             if (_ImgInput != null)
-            {
                 detectarFace();
-            }
-            else
-                throw new Exception("Selecciona una imagen carnal");
         }
 
-        // Face/Eye Detection
+        // Face/Eye Detection Function
         public void detectarFace()
         {
             try
             {
-                string facePath = Path.GetFullPath("C:\\Users\\alumno\\Descargas\\haarcascade_frontalface_default.xml");
-                string eyePath = Path.GetFullPath("C:\\Users\\alumno\\Descargas\\haarcascade_eye.xml");
+                string facePath = Path.GetFullPath("C:\\Users\\alumno\\source\\repos\\PlantillaTratamientoImagen\\ImageBox\\haarcascade_frontalface_default.xml");
+                string eyePath = Path.GetFullPath("C:\\Users\\alumno\\source\\repos\\PlantillaTratamientoImagen\\ImageBox\\haarcascade_eye.xml");
+                string facePath2 = Path.GetFullPath("C:\\Users\\alumno\\source\\repos\\PlantillaTratamientoImagen\\ImageBox\\lbpcascade_frontalface.xml");
 
                 CascadeClassifier classifierFace = new CascadeClassifier(facePath);
+                CascadeClassifier classifierFace2 = new CascadeClassifier(facePath2);
                 CascadeClassifier classifierEye = new CascadeClassifier(eyePath);
 
                 // Face Recognition
+                /*
+                
                 var imgGray = _ImgInput.Convert<Gray, byte>().Clone();
                 Rectangle[] faces = classifierFace.DetectMultiScale(imgGray, 1.1, 3);
 
                 foreach(var face in faces)
+                {
+                    _ImgInput.Draw(face, new Bgr(0, 0, 200), 2);
+
+                    imgGray.ROI = face;
+                }
+
+                */
+
+                var imgGray = _ImgInput.Convert<Gray, byte>().Clone();
+                Rectangle[] faces = classifierFace2.DetectMultiScale(imgGray, 1.1, 3);
+
+                foreach (var face in faces)
                 {
                     _ImgInput.Draw(face, new Bgr(0, 0, 200), 2);
 
@@ -427,6 +439,12 @@ namespace ImageBox
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        // Detect Face/Eyes Event
+        private void DetectarCaraOjosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            detectar();
         }
     }
 }

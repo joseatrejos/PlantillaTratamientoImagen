@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ImageBox</RootNamespace>
     <AssemblyName>ImageBox</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -199,6 +199,8 @@
     <Content Include="bin\x64\Debug\zh-CN\ZedGraph.resources.dll" />
     <Content Include="concrt140.dll" />
     <Content Include="cvextern.dll" />
+    <Content Include="haarcascade_eye.xml" />
+    <Content Include="haarcascade_frontalface_default.xml" />
     <Content Include="img\box.png" />
     <Content Include="img\box_in_scene.png" />
     <Content Include="img\lena.jpg" />
@@ -207,6 +209,7 @@
     <Content Include="img\pic3.png" />
     <Content Include="img\stop-sign-model.png" />
     <Content Include="img\stop-sign.jpg" />
+    <Content Include="lbpcascade_frontalface.xml" />
     <Content Include="obj\Debug\ImageBox.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\ImageBox.exe" />
     <Content Include="obj\Debug\ImageBox.pdb" />

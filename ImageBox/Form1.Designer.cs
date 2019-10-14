@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadVideoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,7 @@
             this.panAndZoomPictureBox2 = new Emgu.CV.UI.PanAndZoomPictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.loadVideoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detectarCaraOjosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panAndZoomPictureBox2)).BeginInit();
@@ -92,6 +93,13 @@
             this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.loadImageToolStripMenuItem.Text = "Load Image";
             this.loadImageToolStripMenuItem.Click += new System.EventHandler(this.LoadImageToolStripMenuItem_Click);
+            // 
+            // loadVideoToolStripMenuItem
+            // 
+            this.loadVideoToolStripMenuItem.Name = "loadVideoToolStripMenuItem";
+            this.loadVideoToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.loadVideoToolStripMenuItem.Text = "Load Video";
+            this.loadVideoToolStripMenuItem.Click += new System.EventHandler(this.loadVideoToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -174,14 +182,14 @@
             // filtroPorRangoToolStripMenuItem
             // 
             this.filtroPorRangoToolStripMenuItem.Name = "filtroPorRangoToolStripMenuItem";
-            this.filtroPorRangoToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.filtroPorRangoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.filtroPorRangoToolStripMenuItem.Text = "Filtro por Rango";
             this.filtroPorRangoToolStripMenuItem.Click += new System.EventHandler(this.FiltroPorRangoToolStripMenuItem_Click);
             // 
             // overlayToolStripMenuItem
             // 
             this.overlayToolStripMenuItem.Name = "overlayToolStripMenuItem";
-            this.overlayToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.overlayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.overlayToolStripMenuItem.Text = "Overlay";
             this.overlayToolStripMenuItem.Click += new System.EventHandler(this.overlayToolStripMenuItem_Click);
             // 
@@ -190,7 +198,8 @@
             this.contornosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.detectarToolStripMenuItem,
             this.detectarFormasToolStripMenuItem,
-            this.detectarTextoToolStripMenuItem});
+            this.detectarTextoToolStripMenuItem,
+            this.detectarCaraOjosToolStripMenuItem});
             this.contornosToolStripMenuItem.Name = "contornosToolStripMenuItem";
             this.contornosToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.contornosToolStripMenuItem.Text = "Contornos";
@@ -199,7 +208,7 @@
             // 
             this.detectarToolStripMenuItem.Name = "detectarToolStripMenuItem";
             this.detectarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.detectarToolStripMenuItem.Text = "Detectar";
+            this.detectarToolStripMenuItem.Text = "Detectar Objetos";
             this.detectarToolStripMenuItem.Click += new System.EventHandler(this.DetectarToolStripMenuItem_Click);
             // 
             // detectarFormasToolStripMenuItem
@@ -256,12 +265,12 @@
             this.pictureBox2.TabIndex = 13;
             this.pictureBox2.TabStop = false;
             // 
-            // loadVideoToolStripMenuItem
+            // detectarCaraOjosToolStripMenuItem
             // 
-            this.loadVideoToolStripMenuItem.Name = "loadVideoToolStripMenuItem";
-            this.loadVideoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadVideoToolStripMenuItem.Text = "Load Video";
-            this.loadVideoToolStripMenuItem.Click += new System.EventHandler(this.loadVideoToolStripMenuItem_Click);
+            this.detectarCaraOjosToolStripMenuItem.Name = "detectarCaraOjosToolStripMenuItem";
+            this.detectarCaraOjosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.detectarCaraOjosToolStripMenuItem.Text = "Detectar Cara/Ojos";
+            this.detectarCaraOjosToolStripMenuItem.Click += new System.EventHandler(this.DetectarCaraOjosToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -316,6 +325,7 @@
         private System.Windows.Forms.ToolStripMenuItem detectarFormasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detectarTextoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadVideoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detectarCaraOjosToolStripMenuItem;
     }
 }
 
