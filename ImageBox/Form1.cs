@@ -328,7 +328,8 @@ namespace ImageBox
             }
         }
 
-        // Detección de Texto
+        // Detección de Letras
+        /*
         private async void detectarTextoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_ImgInput != null)
@@ -358,7 +359,49 @@ namespace ImageBox
                 }
             }
         }
-         
+        */
+
+        // Detección de Palabras
+        private void detectarTextoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Detección de Bordes con Sobel
+            Image<Gray, byte> sobel = _ImgInput.Convert<Gray, byte>().Sobel(1, 0, 3).AbsDiff(new Gray(0.0)).Convert<Gray, byte>().ThresholdBinary(new Gray(200), new Gray(255));
+            Mat SE = CvInvoke.GetStructuringElement(Emgu.CV.CvEnum.ElementShape.Rectangle, new Size(10, 2), new Point(-1, -1));
+
+            // Dilation
+            sobel = sobel.MorphologyEx(Emgu.CV.CvEnum.MorphOp.Dilate, SE, new Point(-1, -1), 1, Emgu.CV.CvEnum.BorderType.Reflect, new MCvScalar(255));
+            Emgu.CV.Util.VectorOfVectorOfPoint contours = new Emgu.CV.Util.VectorOfVectorOfPoint();
+
+            // Find Contours
+            Mat m = new Mat();
+            CvInvoke.FindContours(sobel, contours, m, Emgu.CV.CvEnum.RetrType.External, Emgu.CV.CvEnum.ChainApproxMethod.ChainApproxSimple);
+
+            // Geometrical Constraints
+            List<Rectangle> list = new List<Rectangle>();
+
+            for (int i = 0; i < contours.Size; i++)
+            {
+                Rectangle brect = CvInvoke.BoundingRectangle(contours[i]);
+                double ar = brect.Width / brect.Height;
+
+                if (ar > 2 && brect.Width > 25 && brect.Height > 8 && brect.Height < 100)
+                {
+                    list.Add(brect);
+                }
+            }
+
+            Image<Bgr, byte> imgout = _ImgInput.CopyBlank();
+            foreach (var r in list)
+            {
+                CvInvoke.Rectangle(_ImgInput, r, new MCvScalar(0, 0, 255), 2);
+                CvInvoke.Rectangle(imgout, r, new MCvScalar(0, 255, 255), -1);
+            }
+
+            imgout._And(_ImgInput);
+            pictureBox1.Image = _ImgInput.Bitmap;
+            pictureBox2.Image = imgout.Bitmap;
+        }
+
         // Pintado del la letra reconocida
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -376,7 +419,13 @@ namespace ImageBox
             pv.Show();
         }
 
-        // Falta vincular esto con un botón
+        // Detect Face/Eyes Event
+        private void DetectarCaraOjosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            detectar();
+        }
+
+        // Detectar Caras
         private void detectar()
         {
             if (_ImgInput != null)
@@ -439,12 +488,6 @@ namespace ImageBox
             {
                 throw new Exception(ex.Message);
             }
-        }
-
-        // Detect Face/Eyes Event
-        private void DetectarCaraOjosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            detectar();
         }
     }
 }
